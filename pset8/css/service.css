@@ -1,0 +1,191 @@
+/**
+ * service.css
+ *
+ * Computer Science 50
+ * Problem Set 8
+ *
+ * Global stylesheet.
+ */
+       
+html
+{
+    height: 100%;
+}
+
+body
+{
+    font-family: sans-serif;
+    height: 100%;
+    margin: 0;
+}
+
+#announcements
+{
+    font-size: smaller;
+    margin: 5px;
+    text-align: center;
+}
+
+#chart
+{
+    background-color: #ffffff;
+    bottom: 320px;
+    border-bottom: 1px #cccccc solid;
+    border-top: 1px #cccccc solid;
+    box-shadow: inset 0 10px 10px -10px #999999, inset 0 -10px 10px -10px #999999;
+    font-size: smaller;
+    height: 200px;
+    overflow-y: scroll;
+    padding-top: 5px;
+    position: absolute;
+    width: 320px;
+}
+
+#controls
+{
+    margin-bottom: 10px;
+    margin-top: 10px;
+    text-align: center;
+}
+
+#earth
+{
+    border-right: 1px #cccccc solid;
+    height: 100%;
+    margin-right: 320px;
+}
+
+#instructions
+{
+    font-size: smaller;
+    text-align: center;
+}
+
+#left
+{
+    float: right; 
+    height: 100%;
+    width: 100%
+}
+
+#logo
+{
+    margin-bottom: 10px;
+    font-size: x-large;
+    font-weight: bold;
+    margin-top: 10px;
+    text-align: center;
+}
+
+#map
+{
+    bottom: 0;
+    height: 320px;
+    position: absolute;
+    width: 320px;
+}
+
+#right
+{
+    float: right;
+    height: 100%;
+    margin-right: -100%;
+    width: 320px;
+}
+
+#score
+{
+    font-size: 20px;
+    text-align: center;
+    background-color: #ffffff;
+    border-bottom: 1px #cccccc solid;
+    border-top: 1px #cccccc solid;
+    padding-top: 10px;
+    position: absolute;
+    width: 320px;
+}
+
+#time
+{
+    font-size: 20px;
+    text-align: center;
+    background-color: #ffffff;
+    border-bottom: 1px #cccccc solid;
+    border-top: 1px #cccccc solid;
+    padding-top: 10px;
+    position: absolute;
+    width: 320px;
+    bottom: 520px;
+}
+
+ol.passengers
+{
+    margin: 5;
+    padding: 10;
+}
+
+li.house_empty
+{
+    color: blue;
+}
+
+li.house_Adams
+{
+    color: #FFFF00;
+}
+
+li.house_Cabot
+{
+    color: #FF6633;
+}
+
+li.house_Currier
+{
+    color: #FF0066;
+}
+
+li.house_Dunster
+{
+    color: #CCCC33;
+}
+
+li.house_Eliot
+{
+    color: #99FF66;
+}
+
+li.house_Kirkland
+{
+    color: #663300;
+}
+
+li.house_Leverett
+{
+    color: ##336600;
+}
+
+li.house_Lowell
+{
+    color: #0000FF;
+}
+
+li.house_Mather
+{
+    color: #FF00FF;
+}
+
+li.house_Pforzheimer
+{
+    color: #006600;
+}
+
+li.house_Quincy
+{
+    color: #FFCC99;
+}
+
+li.house_Winthrop
+{
+    color: #33CC66;
+}
+

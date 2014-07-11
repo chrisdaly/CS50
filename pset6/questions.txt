@@ -1,0 +1,61 @@
+0.  What is pneumonoultramicroscopicsilicovolcanoconiosis?
+It is an artificial long word said to mean a lung disease caused by inhaling very fine ash and sand dust.
+
+1. According to its man page, what does getrusage do?
+getrusage() returns resource usage measures for the calling process itself, the children of the calling process, or the calling thread.
+
+2. Per that same man page, how many members are in a variable of type struct rusage?
+16 - 2 structs and 16 long types.
+
+3.  Why do you think we pass before and after by reference (instead of by value) to calculate, even though we’re not changing their contents?
+Passing in values involves copying the two 16 member struts which would take some time and memory. Since the purpose of getrusage() is to track the resources required (including time and RAM) this would lead to inaccuracies. 
+Additionally, if a rusage struct has an undefined value it is autonatically set to zero. This negates any dereferencing crashes or extra checks.
+
+
+4. Explain as precisely as possible, in a paragraph or more, how main goes about reading words from a file. In other words, convince us that you indeed understand how that function’s for loop works.
+The text file is specified in the command line as the 2nd or 3rd argument. A file pointer is set to a file that is opened in "readmode". If the pointer is pointed at a null character then an error is thrown. Then variables are set up before the loop. "index" tracks the position in the word, "misspellings" tracks the amount of words misspelt, "words" tracks the amount of words scanned for misspellings, "word" is the character set that is hopefully building a word that is set to the maximum size of a word plus the end of string character. 
+
+The loop points the cursor at each character until it points at an end of file character. If the cursor's current character is alphabetical or an apostrophe proceeded by a letter then the character is added to "word" in the indexth position and the index is incremented by 1. If the character falls under those criteria but the word is too long then the loop passes through the remainder of the word and resets the "index". Similarly numbers are ignored. If a character is not alphabetical or a number or apostrophe then it must be the end of the word. An end of string character is added and the "words" counter is updated. The word is then passed through the mispelling checks.
+
+5. Why do you think we used fgetc to read each word’s characters one at a time rather than use fscanf with a format string like "%s" to read whole words at a time? Put another way, what problems might arise by relying on fscanf alone?
+
+fgetc reads the file character by character, discriminating vs anything that isn't alphabetical or an apostrophe proceeded by a character. fscanf reads until white space and stores the array in a buffer, the array may contain commas etc which would cause problems for the misspelling function.
+
+6. Why do you think we declared the parameters for check and load as const?
+The const type ensures that the initial value of the parameter cannot be modified. This means that each word we are checking along with the dictionary cannot be changed. This safety measure is useful as these values should be consistent. Students are required to write these functions and it is possible that they might accidently alter something they shouldn't.
+
+7. What data structure(s) did you use to implement your spell-checker? Be sure not to leave your answer at just "hash table," "trie," or the like. Expound on what’s inside each of your "nodes."
+I used a custom struct called "node" to store individual words from the dictionary. It contains a string and a pointer to another node.
+In order to load my dictionary, I used a a hashtable where each entry is a header node pointing to the next node of a linked list.
+I decided to have a large hash table rather than long linked lists, therefore I felt that sorting the linked list would not improve searches enough when considering the extra load time.
+
+8.  How slow was your code the first time you got it working correctly?
+
+WORDS MISSPELLED: 644
+WORDS IN DICTIONARY: 143091
+WORDS IN TEXT: 19190
+TIME IN load: 4.75
+TIME IN check: 1.05
+TIME IN size: 0.00
+TIME IN unload: 0.01
+TIME IN TOTAL: 5.81
+
+9. What kinds of changes, if any, did you make to your code over the course of the week in order to improve its performance?
+
+WORDS MISSPELLED:     644
+WORDS IN DICTIONARY:  143091
+WORDS IN TEXT:        19190
+TIME IN load:         0.10
+TIME IN check:        0.01
+TIME IN size:         0.00
+TIME IN unload:       0.00
+TIME IN TOTAL:        0.12
+
+I used a different hashfunction. At first I only hashed by the first character of a word, then I moved onto the first 2, then 3. I searched online and found a hash function that operated by shifting bits and this created a much more evenly spread hashtable. Credit to delipity at reddit who also recommended a hashtable size which gave consistently low results on multiple runs.
+For the size function, I tracked the words loaded by using a global variable and updating it in load everytime a new word was loaded. 
+
+
+10. Do you feel that your code has any bottlenecks that you were not able to chip away at?
+I made a design choice of having a large hashtable with a good hash function to distribute values as evenly as possibly. This was hopefully enough to justify not sorting the linked lists alphabetically but perhaps it wasn't. With more time it would've been interesting to look into the possible speed increase and also the downsides (if any) of using a large hashtable.
+
+

@@ -33,7 +33,7 @@ int words;
 // define a hashtable
 node* hashtable[HASHTABLE_SIZE] = {NULL}; 
 
-// hashing function - credit to delipity at reddit
+// hashing function
 int hashing_function(char* word)
 {
     unsigned int hash = 0;

@@ -49,7 +49,7 @@ bool check(const char* word)
 {
     // copy the word ( because it is constant type and cannot be used)
     int l = strlen(word);
-    char *copy = malloc(l);
+    char *copy = malloc((l)+1);
     
     // copy the characters and make them lower case
     for (int i = 0; i < l; i++)
